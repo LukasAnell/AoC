@@ -44,16 +44,9 @@ def partTwo():
         line = line.strip()
         splitLine = [sect.strip() for sect in line.split("->")]
         wireMap[splitLine[1]] = splitLine[0].split(" ")
-    # Get the signal for wire 'a' from part one
     signal_a = getValue('a', wireVals, wireMap)
-
-    # Override wire 'b' with the signal from wire 'a'
     wireMap['b'] = [str(signal_a)]
-
-    # Reset wireVals to recalculate the values
     wireVals = {}
-
-    # Get the new signal for wire 'a'
     result = getValue('a', wireVals, wireMap)
     print(result)
 
