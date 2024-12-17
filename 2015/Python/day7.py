@@ -2,49 +2,61 @@ def main():
     partOne()
     partTwo()
 
+def getValue(wire, wireVals, wireMap):
+    if wire.isdigit():
+        return int(wire)
+    if wire not in wireVals:
+        expr = wireMap[wire]
+        if len(expr) == 1:
+            wireVals[wire] = getValue(expr[0], wireVals, wireMap)
+        elif len(expr) == 2:
+            wireVals[wire] = ~getValue(expr[1], wireVals, wireMap) & 0xFFFF
+        elif len(expr) == 3:
+            op1, op, op2 = expr
+            if op == "AND":
+                wireVals[wire] = getValue(op1, wireVals, wireMap) & getValue(op2, wireVals, wireMap)
+            elif op == "OR":
+                wireVals[wire] = getValue(op1, wireVals, wireMap) | getValue(op2, wireVals, wireMap)
+            elif op == "LSHIFT":
+                wireVals[wire] = getValue(op1, wireVals, wireMap) << getValue(op2, wireVals, wireMap)
+            elif op == "RSHIFT":
+                wireVals[wire] = getValue(op1, wireVals, wireMap) >> getValue(op2, wireVals, wireMap)
+    return wireVals[wire]
+
 def partOne():
     file = open("Inputs/7.txt", "r")
     wireMap = {}
-    for line in file:
-        pass
-
-
+    wireVals = {}
     for line in file:
         line = line.strip()
-        splitLine = line.split(" ")
-        if splitLine[1] == "->":
-            if splitLine[0].isdigit(): source = int(splitLine[0])
-            else: source = wireMap.get(splitLine[0])
-            destination = splitLine[2]
-            wireMap[destination] = source
-        elif splitLine[2] == "->":
-            destination = splitLine[3]
-            source = splitLine[1]
-            if wireMap.get(source) is None:
-                wireMap[source] = 0
-            source = int(wireMap.get(source))
-            wireMap[destination] = source ^ 0b1111111111111111
-        elif splitLine[3] == "->":
-            op = splitLine[1]
-            destination = splitLine[4]
-            first = splitLine[0]
-            second = splitLine[2]
-            if wireMap.get(first) is None:
-                wireMap[first] = 0
-            if wireMap.get(second) is None and not second.isdigit():
-                wireMap[second] = 0
-            if op == "AND":
-                wireMap[destination] = wireMap.get(first) & wireMap.get(second)
-            if op == "OR":
-                wireMap[destination] = wireMap.get(first) | wireMap.get(second)
-            if op == "LSHIFT":
-                wireMap[destination] = wireMap.get(first) << int(second)
-            if op == "RSHIFT":
-                wireMap[destination] = wireMap.get(first) >> int(second)
-    print(sum([int(value) for value in wireMap.values()]))
+        splitLine = [sect.strip() for sect in line.split("->")]
+        wireMap[splitLine[1]] = splitLine[0].split(" ")
+
+    result = getValue('a', wireVals, wireMap)
+    print(result)
+
 
 def partTwo():
-    pass
+    file = open("Inputs/7.txt", "r")
+    wireMap = {}
+    wireVals = {}
+    for line in file:
+        line = line.strip()
+        splitLine = [sect.strip() for sect in line.split("->")]
+        wireMap[splitLine[1]] = splitLine[0].split(" ")
+    # Get the signal for wire 'a' from part one
+    signal_a = getValue('a', wireVals, wireMap)
+
+    # Override wire 'b' with the signal from wire 'a'
+    wireMap['b'] = [str(signal_a)]
+
+    # Reset wireVals to recalculate the values
+    wireVals = {}
+
+    # Get the new signal for wire 'a'
+    result = getValue('a', wireVals, wireMap)
+    print(result)
+
 
 if __name__ == '__main__':
     main()
