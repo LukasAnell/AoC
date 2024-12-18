@@ -3,25 +3,35 @@ def main():
     partTwo()
 
 
-def partOne():
-    file = open("Inputs/10.txt", "r")
-    line = [int(char) for char in file.readline().strip()]
-    print(line)
-    compressedLine = []
+def lookAndSay(sequence):
+    result = []
     i = 0
-    while i < len(line):
+    while i < len(sequence):
         count = 1
-        while i + 1 < len(line) and line[i] == line[i + 1]:
+        while i + 1 < len(sequence) and sequence[i] == sequence[i + 1]:
             count += 1
             i += 1
-        compressedLine.append({line[i]: count})
+        result.append(str(count) + sequence[i])
         i += 1
-    print(compressedLine)
+    return ''.join(result)
 
+
+def partOne():
+    file = open("Inputs/10.txt", "r")
+    line = [char for char in file.readline().strip()]
+    for _ in range(40):
+        line = lookAndSay(line)
+
+    print(len(line))
 
 
 def partTwo():
-    pass
+    file = open("Inputs/10.txt", "r")
+    line = [char for char in file.readline().strip()]
+    for _ in range(50):
+        line = lookAndSay(line)
+
+    print(len(line))
 
 
 if __name__ == '__main__':
