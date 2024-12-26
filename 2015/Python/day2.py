@@ -23,8 +23,7 @@ def partTwo():
     squareFeet = 0
     for line in file:
         dimensions = sorted([int(num) for num in line.split("x")])
-        squareFeet += 2 * (dimensions[0] + dimensions[1])
-        squareFeet += reduce(operator.mul, dimensions)
+        squareFeet += 2 * (dimensions[0] + dimensions[1]) + reduce(operator.mul, dimensions)
     print(squareFeet)
 
 if __name__ == '__main__':

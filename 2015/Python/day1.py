@@ -4,14 +4,7 @@ def main():
 
 def partOne():
     file = open("Inputs/1.txt", "r")
-    floor = 0
-    for line in file:
-        for char in line:
-            if char == "(":
-                floor += 1
-            else:
-                floor -= 1
-    print(floor, end="\n")
+    print(sum(line.count("(") - line.count(")") for line in file))
 
 def partTwo():
     file = open("Inputs/1.txt", "r")
