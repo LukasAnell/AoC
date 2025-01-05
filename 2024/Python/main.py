@@ -18,7 +18,7 @@ def fetchInputs(day: int):
     file_path = os.path.join(dest_folder, filename)
 
     if response.ok:
-        # print("saving to", os.path.abspath(file_path))
+        print("saving to", os.path.abspath(file_path))
         with open(file_path, 'wb') as f:
             for chunk in response.iter_content(chunk_size=1024 * 8):
                 if chunk:
