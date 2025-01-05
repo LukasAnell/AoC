@@ -12,9 +12,9 @@ def partOne():
     i = 0
     times = 0
     password = ""
+    m = hashlib.md5()
     while times < 8:
         newDoorId = doorId + str(i)
-        m = hashlib.md5()
         m.update(newDoorId.encode('UTF-8'))
         test = m.hexdigest()
         if test[:5] == "00000":
@@ -30,9 +30,9 @@ def partTwo():
     i = 0
     times = 0
     password = ['_'] * 8
+    m = hashlib.md5()
     while times < 8:
         newDoorId = doorId + str(i)
-        m = hashlib.md5()
         m.update(newDoorId.encode('UTF-8'))
         test = m.hexdigest()
         if test[:5] == "00000":

@@ -16,9 +16,10 @@ def createRect(screen, width, height):
 
 def rotateRow(screen, rowNum, amount):
     screenCopy = screen.copy()
-    row = deque(screen[rowNum])
-    row.rotate(amount)
-    screenCopy[rowNum] = list(row)
+    row = screenCopy[rowNum]
+    amount %= len(row)
+    row[:] = row[-amount:] + row[:-amount]
+    screenCopy[rowNum] = row
     return screenCopy
 
 

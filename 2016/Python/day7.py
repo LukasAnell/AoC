@@ -35,11 +35,11 @@ def partOne():
 
 
 def findABA(segment):
-    aba_list = []
+    abaList = []
     for i in range(len(segment) - 2):
         if segment[i] == segment[i + 2] and segment[i] != segment[i + 1]:
-            aba_list.append(segment[i:i + 3])
-    return aba_list
+            abaList.append(segment[i:i + 3])
+    return abaList
 
 
 def hasCorrespondingBAB(aba_list, hypernets):
@@ -57,10 +57,10 @@ def partTwo():
     for line in file:
         line = line.strip()
         hypernets, outsides = findHypernetsAndOutsides(line)
-        aba_list = []
+        abaList = []
         for outside in outsides:
-            aba_list.extend(findABA(outside))
-        if hasCorrespondingBAB(aba_list, hypernets):
+            abaList.extend(findABA(outside))
+        if hasCorrespondingBAB(abaList, hypernets):
             supportSSLCount += 1
     print(supportSSLCount)
 

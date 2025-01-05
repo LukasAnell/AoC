@@ -31,22 +31,22 @@ def partOne():
     while True:
         for bot, values in bots.items():
             if len(values) == 2:
-                low_value, high_value = sorted(values)
-                if low_value == 17 and high_value == 61:
+                lowValue, highValue = sorted(values)
+                if lowValue == 17 and highValue == 61:
                     print(bot)
                     return
-                low_is_output, low_num = lows[bot]
-                high_is_output, high_num = highs[bot]
-                if not low_is_output:
-                    if low_num in bots:
-                        bots[low_num].append(low_value)
+                lowIsOutput, lowNum = lows[bot]
+                highIsOutput, highNum = highs[bot]
+                if not lowIsOutput:
+                    if lowNum in bots:
+                        bots[lowNum].append(lowValue)
                     else:
-                        bots[low_num] = [low_value]
-                if not high_is_output:
-                    if high_num in bots:
-                        bots[high_num].append(high_value)
+                        bots[lowNum] = [lowValue]
+                if not highIsOutput:
+                    if highNum in bots:
+                        bots[highNum].append(highValue)
                     else:
-                        bots[high_num] = [high_value]
+                        bots[highNum] = [highValue]
                 bots[bot] = []
                 break
 
@@ -57,23 +57,23 @@ def partTwo():
     while True:
         for bot, values in bots.items():
             if len(values) == 2:
-                low_value, high_value = sorted(values)
-                low_is_output, low_num = lows[bot]
-                high_is_output, high_num = highs[bot]
-                if not low_is_output:
-                    if low_num in bots:
-                        bots[low_num].append(low_value)
+                lowValue, highValue = sorted(values)
+                lowIsOutput, lowNum = lows[bot]
+                highIsOutput, highNum = highs[bot]
+                if not lowIsOutput:
+                    if lowNum in bots:
+                        bots[lowNum].append(lowValue)
                     else:
-                        bots[low_num] = [low_value]
+                        bots[lowNum] = [lowValue]
                 else:
-                    outputs[low_num] = low_value
-                if not high_is_output:
-                    if high_num in bots:
-                        bots[high_num].append(high_value)
+                    outputs[lowNum] = lowValue
+                if not highIsOutput:
+                    if highNum in bots:
+                        bots[highNum].append(highValue)
                     else:
-                        bots[high_num] = [high_value]
+                        bots[highNum] = [highValue]
                 else:
-                    outputs[high_num] = high_value
+                    outputs[highNum] = highValue
                 bots[bot] = []
                 break
         if 0 in outputs and 1 in outputs and 2 in outputs:

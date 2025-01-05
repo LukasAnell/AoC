@@ -1,3 +1,6 @@
+from collections import Counter
+
+
 def main():
     partOne()
     partTwo()
@@ -9,11 +12,7 @@ def findLinesByCol():
 
 
 def findMostCommon(chars):
-    charCount = {}
-    for char in chars:
-        if char not in charCount:
-            charCount[char] = 0
-        charCount[char] += 1
+    charCount = Counter(chars)
     return max(charCount, key=charCount.get)
 
 
@@ -26,11 +25,7 @@ def partOne():
 
 
 def findLeastCommon(chars):
-    charCount = {}
-    for char in chars:
-        if char not in charCount:
-            charCount[char] = 0
-        charCount[char] += 1
+    charCount = Counter(chars)
     return min(charCount, key=charCount.get)
 
 
