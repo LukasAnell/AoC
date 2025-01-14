@@ -6,3 +6,5 @@
 /2016/Python/Descriptions
 /2024/Python/Descriptions
 hidden.py
+__pycache__
+.idea
