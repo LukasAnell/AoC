@@ -4,7 +4,7 @@ def main():
 
 
 def partOne():
-    line = open("../Inputs/2.txt", "r")
+    line = open("Inputs/2.txt", "r")
     ranges = []
     for line in line:
         ranges += line.strip().split(",")
@@ -23,7 +23,7 @@ def partOne():
 
 
 def partTwo():
-    line = open("../Inputs/2.txt", "r")
+    line = open("Inputs/2.txt", "r")
     ranges = []
     for line in line:
         ranges += line.strip().split(",")

@@ -6,9 +6,13 @@ from dotenv import load_dotenv
 def main():
     load_dotenv()
     another_loop = True
-    while (another_loop):
+    while another_loop:
         year = int(input("What year?\n"))
-        for i in range(1, 25 + 1):
+        upperBound = int(input("Up to what day? (1-25)\n"))
+        if upperBound < 1 or upperBound > 25:
+            print("Invalid day")
+            continue
+        for i in range(1, upperBound + 1):
             fetchInputs(year, i)
         print("Saved successfully")
         another_loop = input("Go again?\n") in ["y", "yes"]
@@ -16,10 +20,12 @@ def main():
 
 
 def fetchInputs(year: int, day: int):
-    uri = f"http://adventofcode.com/{year}/day/{day}/input"
-    response = requests.get(uri, cookies={'session': os.getenv("SESSION_ID")},
-                            headers={'User-Agent': os.getenv("USER_AGENT")}, stream=True)
-    dest_folder = f"../{year}/Inputs"
+    uri = f"https://adventofcode.com/{year}/day/{day}/input"
+    response = requests.get(
+        uri,
+        cookies={"session": os.getenv("AOC_SESSION_COOKIE")}
+    )
+    dest_folder = f"../{year}/"
     if not os.path.exists(dest_folder):
         os.makedirs(dest_folder)
 

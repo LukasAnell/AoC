@@ -4,7 +4,7 @@ def main():
 
 
 def partOne():
-    file = open("../Inputs/3.txt", "r")
+    file = open("Inputs/3.txt", "r")
 
     output = 0
     for line in file:
@@ -33,7 +33,7 @@ def findLargestDigit(line):
 
 
 def partTwo():
-    file = open("../Inputs/3.txt", "r")
+    file = open("Inputs/3.txt", "r")
 
     output = 0
     for line in file:

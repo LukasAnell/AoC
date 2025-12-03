@@ -4,7 +4,7 @@ def main():
 
 
 def partOne():
-    file = open("../Inputs/1.txt", "r")
+    file = open("Inputs/1.txt", "r")
     times = 0
     currentNum = 50
     for line in file:
@@ -24,7 +24,7 @@ def partOne():
 
 
 def partTwo():
-    file = open("../Inputs/1.txt", "r")
+    file = open("Inputs/1.txt", "r")
     times = 0
     currentNum = 50
     for line in file:
