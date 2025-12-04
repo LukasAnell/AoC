@@ -1,10 +1,13 @@
+from Python.Utilities.utils import readInputLines
+
+
 def main():
     partOne()
     partTwo()
 
 
 def partOne():
-    file = open("Inputs/3.txt", "r")
+    file = readInputLines()
 
     output = 0
     for line in file:
@@ -33,7 +36,7 @@ def findLargestDigit(line):
 
 
 def partTwo():
-    file = open("Inputs/3.txt", "r")
+    file = readInputLines()
 
     output = 0
     for line in file:
@@ -62,7 +65,6 @@ def partTwo():
         output += int(current)
 
     print(output)
-
 
 
 if __name__ == '__main__':

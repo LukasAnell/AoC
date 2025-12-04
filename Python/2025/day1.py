@@ -1,13 +1,16 @@
+from Python.Utilities.utils import readInputLines
+
+
 def main():
     partOne()
     partTwo()
 
 
 def partOne():
-    file = open("Inputs/1.txt", "r")
+    lines = readInputLines()
     times = 0
     currentNum = 50
-    for line in file:
+    for line in lines:
         line = line.strip()
         direction = line[0]
         distance = int(line[1:])
@@ -24,10 +27,10 @@ def partOne():
 
 
 def partTwo():
-    file = open("Inputs/1.txt", "r")
+    lines = readInputLines()
     times = 0
     currentNum = 50
-    for line in file:
+    for line in lines:
         line = line.strip()
         direction = line[0]
         distance = int(line[1:])

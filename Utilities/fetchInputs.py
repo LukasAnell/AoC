@@ -1,4 +1,5 @@
 import os
+
 import requests
 from dotenv import load_dotenv
 
@@ -25,7 +26,7 @@ def fetchInputs(year: int, day: int):
         uri,
         cookies={"session": os.getenv("AOC_SESSION_COOKIE")}
     )
-    dest_folder = f"../{year}/"
+    dest_folder = f"../Inputs/{year}/"
     if not os.path.exists(dest_folder):
         os.makedirs(dest_folder)
 

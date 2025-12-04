@@ -1,12 +1,15 @@
+from Python.Utilities.utils import readInputLines
+
+
 def main():
     partOne()
     partTwo()
 
 
 def partOne():
-    line = open("Inputs/2.txt", "r")
+    lines = readInputLines()
     ranges = []
-    for line in line:
+    for line in lines:
         ranges += line.strip().split(",")
     total = 0
     for r in ranges:
@@ -23,9 +26,9 @@ def partOne():
 
 
 def partTwo():
-    line = open("Inputs/2.txt", "r")
+    lines = readInputLines()
     ranges = []
-    for line in line:
+    for line in lines:
         ranges += line.strip().split(",")
     total = 0
     for r in ranges:
