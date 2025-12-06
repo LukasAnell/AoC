@@ -14,6 +14,14 @@ def main():
             print("Invalid day")
             continue
         for i in range(1, upperBound + 1):
+            dest_folder = f"../Inputs/{year}/"
+            filename = f"{i}.txt"
+            file_path = os.path.join(dest_folder, filename)
+            if os.path.exists(file_path):
+                print(f"Day {i} input already exists, skipping...")
+                continue
+
+            print(f"Fetching input for Day {i}...")
             fetchInputs(year, i)
         print("Saved successfully")
         another_loop = input("Go again?\n") in ["y", "yes"]
