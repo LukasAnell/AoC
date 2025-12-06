@@ -1,5 +1,7 @@
 from Python.Utilities.utils import readInputLines
 
+lines = readInputLines()
+
 
 def main():
     partOne()
@@ -7,7 +9,7 @@ def main():
 
 
 def partOne():
-    grid = [[c for c in line.strip()] for line in readInputLines()]
+    grid = [[c for c in line.strip()] for line in lines]
 
     rolls = 0
     for r in range(len(grid)):
@@ -31,7 +33,7 @@ def partOne():
 
 
 def partTwo():
-    grid = [[c for c in line.strip()] for line in readInputLines()]
+    grid = [[c for c in line.strip()] for line in lines]
 
     rolls = 0
     rollsLeft = True

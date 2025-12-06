@@ -1,5 +1,7 @@
 from Python.Utilities.utils import readInputLines
 
+lines = readInputLines()
+
 
 def main():
     partOne()
@@ -7,7 +9,6 @@ def main():
 
 
 def partOne():
-    lines = readInputLines()
     times = 0
     currentNum = 50
     for line in lines:
@@ -27,7 +28,6 @@ def partOne():
 
 
 def partTwo():
-    lines = readInputLines()
     times = 0
     currentNum = 50
     for line in lines:

@@ -1,5 +1,7 @@
 from Python.Utilities.utils import readInputLines
 
+lines = readInputLines()
+
 
 def main():
     partOne()
@@ -7,10 +9,8 @@ def main():
 
 
 def partOne():
-    file = readInputLines()
-
     output = 0
-    for line in file:
+    for line in lines:
         line = line.strip()
 
         largest = findLargestDigit(line)
@@ -36,10 +36,8 @@ def findLargestDigit(line):
 
 
 def partTwo():
-    file = readInputLines()
-
     output = 0
-    for line in file:
+    for line in lines:
         line = line.strip()
 
         current = ""

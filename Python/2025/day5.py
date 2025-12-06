@@ -1,5 +1,7 @@
 from Python.Utilities.utils import readInputLines
 
+lines = readInputLines()
+
 
 def main():
     partOne()
@@ -7,8 +9,6 @@ def main():
 
 
 def partOne():
-    lines = readInputLines()
-
     freshCount = 0
     rangesList = []
     for line in lines:
@@ -28,8 +28,6 @@ def partOne():
 
 
 def partTwo():
-    lines = readInputLines()
-
     rangesList = []
     for line in lines:
         line = line.strip()
