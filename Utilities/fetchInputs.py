@@ -6,25 +6,26 @@ from dotenv import load_dotenv
 
 def main():
     load_dotenv()
-    another_loop = True
-    while another_loop:
+    anotherLoop = True
+    while anotherLoop:
         year = int(input("What year?\n"))
         upperBound = int(input("Up to what day? (1-25)\n"))
         if upperBound < 1 or upperBound > 25:
             print("Invalid day")
             continue
+
         for i in range(1, upperBound + 1):
-            dest_folder = f"../Inputs/{year}/"
+            destFolder = f"../Inputs/{year}/"
             filename = f"{i}.txt"
-            file_path = os.path.join(dest_folder, filename)
-            if os.path.exists(file_path):
-                print(f"Day {i} input already exists, skipping...")
+            filePath = os.path.join(destFolder, filename)
+            if os.path.exists(filePath):
+                # print(f"Day {i} input already exists, skipping...")
                 continue
 
-            print(f"Fetching input for Day {i}...")
+            # print(f"Fetching input for Day {i}...")
             fetchInputs(year, i)
         print("Saved successfully")
-        another_loop = input("Go again?\n") in ["y", "yes"]
+        anotherLoop = input("Go again?\n") in ["y", "yes"]
     print("Exited.\n")
 
 
@@ -34,6 +35,7 @@ def fetchInputs(year: int, day: int):
         uri,
         cookies={"session": os.getenv("AOC_SESSION_COOKIE")}
     )
+
     dest_folder = f"../Inputs/{year}/"
     if not os.path.exists(dest_folder):
         os.makedirs(dest_folder)
