@@ -1,2 +1,6 @@
 .env
-/Inputs/
+.venv/
+__pycache__/
+*.pyc
+inputs/*
+!inputs/.gitkeep
