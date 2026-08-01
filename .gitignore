@@ -1,2 +1,4 @@
 .env
-/Inputs/
+/inputs/
+__pycache__/
+*.pyc
