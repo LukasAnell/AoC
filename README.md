@@ -2,6 +2,8 @@
 
 My solutions to the [Advent of Code](https://adventofcode.com/) puzzles, organized by language and year.
 
+---
+
 ## Layout
 
 ```
@@ -19,6 +21,8 @@ AoC/
 Adding a new language means adding a new top-level folder (e.g. `cpp/<year>/`) alongside
 `python/` and `java/`, reusing the same shared `inputs/` tree, with its own dependency
 management and its own README.
+
+---
 
 ## Getting started
 
