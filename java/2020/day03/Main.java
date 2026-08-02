@@ -17,7 +17,23 @@ public class Main {
     }
 
     private static void partOne(List<String> lines) {
-        // TODO
+        int width = lines.get(0).length();
+        int height = lines.size();
+
+        int treesEncountered = 0;
+
+        int r = 0;
+        int c = 0;
+        while (r < height) {
+            if (lines.get(r).charAt(c) == '#') {
+                treesEncountered++;
+            }
+
+            r++;
+            c = (c + 3) % width;
+        }
+
+        System.out.println("Part One: " + treesEncountered);
     }
 
     private static void partTwo(List<String> lines) {
