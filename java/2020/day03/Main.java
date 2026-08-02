@@ -37,6 +37,38 @@ public class Main {
     }
 
     private static void partTwo(List<String> lines) {
-        // TODO
+        int multipliedEncounters = 1;
+
+        multipliedEncounters *= findTreesEncountered(lines, 1, 1);
+        multipliedEncounters *= findTreesEncountered(lines, 3, 1);
+        multipliedEncounters *= findTreesEncountered(lines, 5, 1);
+        multipliedEncounters *= findTreesEncountered(lines, 7, 1);
+        multipliedEncounters *= findTreesEncountered(lines, 1, 2);
+
+        System.out.println("Part Two: " + multipliedEncounters);
+    }
+
+    private static int findTreesEncountered(
+        List<String> slopeMap,
+        int rightAmount,
+        int downAmount
+    ) {
+        int width = slopeMap.get(0).length();
+        int height = slopeMap.size();
+
+        int treesEncountered = 0;
+
+        int r = 0;
+        int c = 0;
+        while (r < height) {
+            if (slopeMap.get(r).charAt(c) == '#') {
+                treesEncountered++;
+            }
+
+            r += downAmount;
+            c = (c + rightAmount) % width;
+        }
+
+        return treesEncountered;
     }
 }
