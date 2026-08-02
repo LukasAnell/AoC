@@ -17,7 +17,36 @@ public class Main {
     }
 
     private static void partOne(List<String> lines) {
-        // TODO
+        int validPassportCount = 0;
+
+        for (int i = 0; i < lines.size(); i++) {
+            List<String> currentPassport = new ArrayList<>();
+
+            while (i < lines.size() && !lines.get(i).isBlank()) {
+                currentPassport.add(lines.get(i));
+
+                i++;
+            }
+
+            Set<String> requiredFields = new HashSet<>(
+                Set.of("byr", "iyr", "eyr", "hgt", "hcl", "ecl", "pid")
+            );
+
+            Set<String> fieldSet = new HashSet<>();
+            for (String line : currentPassport) {
+                String[] split = line.split(" ");
+
+                for (String keyValue : split) {
+                    fieldSet.add(keyValue.split(":")[0]);
+                }
+            }
+
+            if (fieldSet.containsAll(requiredFields)) {
+                validPassportCount++;
+            }
+        }
+
+        System.out.println("Part One: " + validPassportCount);
     }
 
     private static void partTwo(List<String> lines) {
