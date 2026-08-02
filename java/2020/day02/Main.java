@@ -30,13 +30,13 @@ public class Main {
             int lowerBound = Integer.parseInt(range[0]);
             int upperBound = Integer.parseInt(range[1]);
 
-            String targetLetter = parts[1].substring(0, 1);
+            char targetLetter = parts[1].charAt(0);
 
             String password = parts[2];
 
             int targetLetterCount = 0;
             for (char c : password.toCharArray()) {
-                if (c == targetLetter.charAt(0)) {
+                if (c == targetLetter) {
                     targetLetterCount++;
                 }
             }
@@ -53,6 +53,27 @@ public class Main {
     }
 
     private static void partTwo(List<String> lines) {
-        // TODO
+        int validPasswords = 0;
+
+        for (String line : lines) {
+            String[] parts = line.split(" ");
+
+            String[] positions = parts[0].split("-");
+            int pos1 = Integer.parseInt(positions[0]);
+            int pos2 = Integer.parseInt(positions[1]);
+
+            char targetLetter = parts[1].charAt(0);
+
+            String password = parts[2];
+
+            boolean pos1Matches = password.charAt(pos1 - 1) == targetLetter;
+            boolean pos2Matches = password.charAt(pos2 - 1) == targetLetter;
+
+            if (pos1Matches ^ pos2Matches) {
+                validPasswords++;
+            }
+        }
+
+        System.out.println("Part Two: " + validPasswords);
     }
 }
