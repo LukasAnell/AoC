@@ -34,19 +34,16 @@ public class Main {
 
             String password = parts[2];
 
-            Map<Character, Integer> passwordChars = new HashMap<>();
-
+            int targetLetterCount = 0;
             for (char c : password.toCharArray()) {
                 if (c == targetLetter.charAt(0)) {
-                    passwordChars.put(c, passwordChars.getOrDefault(c, 0) + 1);
+                    targetLetterCount++;
                 }
             }
 
             if (
-                passwordChars.getOrDefault(targetLetter.charAt(0), 0) >=
-                    lowerBound &&
-                passwordChars.getOrDefault(targetLetter.charAt(0), 0) <=
-                    upperBound
+                targetLetterCount >= lowerBound &&
+                targetLetterCount <= upperBound
             ) {
                 validPasswords++;
             }
